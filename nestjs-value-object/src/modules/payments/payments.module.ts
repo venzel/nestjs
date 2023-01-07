@@ -13,8 +13,8 @@ import {
     controllers: [PaymentsController],
     providers: [
         PaymentServicesAdapter,
-        CreatePaymentService,
         FindOnePaymentService,
+        CreatePaymentService,
         ListPaymentsService,
         PaymentInMemoryMapper,
         PaymentInMemoryRepository,

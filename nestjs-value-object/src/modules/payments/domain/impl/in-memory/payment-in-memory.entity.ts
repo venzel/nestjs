@@ -1,25 +1,21 @@
 import { randomUUID } from 'node:crypto';
 import { CreatePaymentDto } from 'src/modules/payments/dtos/payment-dtos.barrel';
 import { PaymentEntity } from '../../payment.entity';
-import { Amount } from './types/payment-type.barril';
+import { Amount, CreatedAt, Description, Discount, Id } from './types/payment-type.barril';
 
-export interface PaymentProps {
-    id?: string;
+interface PaymentProps {
+    id?: Id;
     amount: Amount;
-    discount: Number;
-    description: string;
-    createdAt: Date;
+    discount: Discount;
+    description: Description;
+    createdAt: CreatedAt;
 }
 
 export class PaymentInMemoryEntity implements PaymentEntity {
-    private props: PaymentProps;
-
-    private constructor(props: PaymentProps) {
-        this.props = props;
-    }
+    private constructor(private readonly props: PaymentProps) {}
 
     get id(): string {
-        return this.props.id;
+        return this.props.id.value;
     }
 
     get amount(): Number {
@@ -27,30 +23,30 @@ export class PaymentInMemoryEntity implements PaymentEntity {
     }
 
     get discount(): Number {
-        return this.props.discount;
+        return this.props.discount.value;
     }
 
     get description(): string {
-        return this.props.description;
-    }
-
-    set description(value: string) {
-        this.props.description = value;
+        return this.props.description.value;
     }
 
     get createdAt(): Date {
-        return this.props.createdAt;
+        return this.props.createdAt.value;
     }
 
     static create(dto: CreatePaymentDto): PaymentEntity {
+        const idFactory = Id.create(randomUUID());
         const amountFactory = Amount.create(dto.amount);
+        const discountFactory = Discount.create(dto.discount);
+        const descriptionFactory = Description.create(dto.description);
+        const createdAtFactory = CreatedAt.create(new Date());
 
         return new PaymentInMemoryEntity({
-            id: randomUUID(),
+            id: idFactory,
             amount: amountFactory,
-            discount: dto.discount,
-            description: dto.description,
-            createdAt: new Date(),
+            discount: discountFactory,
+            description: descriptionFactory,
+            createdAt: createdAtFactory,
         });
     }
 }
