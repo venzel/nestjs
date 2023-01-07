@@ -3,4 +3,5 @@ export interface PaymentEntity {
     readonly amount: Number;
     readonly discount: Number;
     readonly description: string;
+    readonly createdAt: Date;
 }

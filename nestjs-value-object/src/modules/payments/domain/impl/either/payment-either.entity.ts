@@ -10,6 +10,7 @@ export interface PaymentEntityProps {
     readonly amount: Amount;
     readonly discount: Discount;
     readonly description: Description;
+    readonly createdAt: Date;
 }
 
 export class PaymentEitherEntity implements PaymentEntity {
@@ -31,6 +32,10 @@ export class PaymentEitherEntity implements PaymentEntity {
 
     get description(): string {
         return this.props.description.value;
+    }
+
+    get createdAt(): Date {
+        return this.props.createdAt;
     }
 
     static create(
@@ -60,6 +65,7 @@ export class PaymentEitherEntity implements PaymentEntity {
                 amount: AmountOrError.value,
                 discount: DiscountOrError.value,
                 description: DescriptionOrError.value,
+                createdAt: new Date(),
             }),
         );
     }

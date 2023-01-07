@@ -14,8 +14,8 @@ export class PaymentServicesAdapter {
         private readonly listPaymentsService: ListPaymentsService,
     ) {}
 
-    create(dto: CreatePaymentDto) {
-        return this.createPaymentService.execute(dto);
+    create(createPaymentDto: CreatePaymentDto) {
+        return this.createPaymentService.execute(createPaymentDto);
     }
 
     findOne(id: string) {
