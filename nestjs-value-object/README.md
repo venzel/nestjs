@@ -8,9 +8,9 @@
 
 ## Pré requisitos
 
-- NodeJs ^14.15.0 || >=16.10.0, versão corrente 18.12.1
-- Npm, versão corrente 8.19.2
-- CLI NestJs, versão corrente 9.1.5
+-   NodeJs ^14.15.0 || >=16.10.0, versão corrente 18.12.1
+-   Npm, versão corrente 8.19.2
+-   CLI NestJs, versão corrente 9.1.5
 
 ## Instalar o CLI do NestJs
 
@@ -33,40 +33,50 @@ nest g res payments --no-spec
 
 ## Técnicas utilizadas
 
-- Adapter + barrel nos services
-- ORM
+-   Adapter + barrel nos services
+-   ORM
 
 ## Pacotes utilizados
 
-- @nestjs/config
-- @nestjs/typeorm
-- typeorm
-- pg
-- class-validator
-- class-transformer
-- @swc/jest -D (Módulo para acelerar o transpile)
-- @swc/core -D (Módulo para acelerar o transpile)
+-   @nestjs/config
+-   @nestjs/typeorm
+-   typeorm
+-   pg
+-   class-validator
+-   class-transformer
+-   @swc/jest -D (Módulo para acelerar o transpile)
+-   @swc/core -D (Módulo para acelerar o transpile)
 
 ## Para acelelar o transpile, necessário criar o arquivo .swcrc com o conteúdo:
 
 ```json
 {
-  "jsc": {
-    "parser": {
-      "syntax": "typescript",
-      "tsx": false,
-      "decorators": true
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": false,
+            "decorators": true
+        },
+        "target": "es2017",
+        "keepClassNames": true,
+        "transform": {
+            "legacyDecorator": true,
+            "decoratorMetadata": true
+        }
     },
-    "target": "es2017",
-    "keepClassNames": true,
-    "transform": {
-      "legacyDecorator": true,
-      "decoratorMetadata": true
+    "module": {
+        "type": "commonjs"
     }
-  },
-  "module": {
-    "type": "commonjs"
-  }
+}
+```
+
+## Para fazer uma validação profunda das tipagens
+
+no arquivo tsconfig.json, adicionar a linha:
+
+```json
+{
+    "strict": true
 }
 ```
 

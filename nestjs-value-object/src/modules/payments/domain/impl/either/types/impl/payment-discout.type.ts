@@ -1,14 +1,17 @@
+import { Either, left, right } from 'src/core/utils/either';
+import { DiscountError } from '../../../../errors/payment-errors.barrel';
+
 export class Discount {
     private constructor(private readonly discount: Number) {
         Object.freeze(this);
     }
 
-    static create(discount: Number): Error | Discount {
+    static create(discount: Number): Either<DiscountError, Discount> {
         if (!this.validate(discount)) {
-            return new Error('Discount invalid!');
+            return left(new DiscountError(`Discount ${discount.toString()} invalid!`));
         }
 
-        return new this(discount);
+        return right(new Discount(discount));
     }
 
     get value(): Number {

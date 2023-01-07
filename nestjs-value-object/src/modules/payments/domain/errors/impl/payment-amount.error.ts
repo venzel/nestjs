@@ -1,7 +1,7 @@
 export class AmountError extends Error {
     readonly value: string = 'AmountError';
 
-    constructor(message: string) {
-        super(message);
+    constructor(amount: string) {
+        super(`Amount ${amount} invalid!`);
     }
 }

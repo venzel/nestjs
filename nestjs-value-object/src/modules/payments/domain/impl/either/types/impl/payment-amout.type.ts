@@ -1,16 +1,17 @@
-import { AmountError } from '../../errors/payment-amount.error';
+import { Either, left, right } from 'src/core/utils/either';
+import { AmountError } from '../../../../errors/impl/payment-amount.error';
 
 export class Amount {
     private constructor(private readonly amount: Number) {
         Object.freeze(this);
     }
 
-    static create(amount: Number): AmountError | Amount {
+    static create(amount: Number): Either<AmountError, Amount> {
         if (!this.validate(amount)) {
-            return new AmountError('Amount invalid!');
+            return left(new AmountError(amount.toString()));
         }
 
-        return new this(amount);
+        return right(new Amount(amount));
     }
 
     get value(): Number {

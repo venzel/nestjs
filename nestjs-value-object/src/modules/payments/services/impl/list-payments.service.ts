@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { ResposePaymentDto } from '../../dtos/response-payment.dto';
+import { ResponsePaymentDto } from '../../dtos/impl/response-payment.dto';
 
 @Injectable()
 export class ListPaymentsService {
-    async execute(): Promise<ResposePaymentDto[]> {
+    async execute(): Promise<ResponsePaymentDto[]> {
         return [];
     }
 }

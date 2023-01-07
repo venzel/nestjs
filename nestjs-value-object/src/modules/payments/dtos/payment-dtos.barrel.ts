@@ -1,4 +1,4 @@
-import { CreatePaymentDto } from './create-payment.dto';
-import { ResposePaymentDto } from './response-payment.dto';
+import { CreatePaymentDto } from './impl/create-payment.dto';
+import { ResponsePaymentDto } from './impl/response-payment.dto';
 
-export { CreatePaymentDto, ResposePaymentDto };
+export { CreatePaymentDto, ResponsePaymentDto };

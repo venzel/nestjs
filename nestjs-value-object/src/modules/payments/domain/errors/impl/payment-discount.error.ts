@@ -1,7 +1,7 @@
 export class DiscountError extends Error {
     readonly value: string = 'DiscountError';
 
-    constructor(message: string) {
-        super(message);
+    constructor(discount: string) {
+        super(`Discount ${discount} invalid!`);
     }
 }

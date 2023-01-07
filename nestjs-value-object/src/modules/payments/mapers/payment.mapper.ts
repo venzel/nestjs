@@ -1,1 +1,1 @@
-export class PaymentMapper {}
+export interface PaymentMapper {}

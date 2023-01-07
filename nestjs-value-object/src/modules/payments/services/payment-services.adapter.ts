@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePaymentDto } from '../dtos/create-payment.dto';
+import { CreatePaymentDto } from '../dtos/impl/create-payment.dto';
 import {
     CreatePaymentService,
     FindOnePaymentService,
