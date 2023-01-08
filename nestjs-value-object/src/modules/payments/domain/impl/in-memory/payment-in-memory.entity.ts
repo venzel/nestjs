@@ -3,7 +3,7 @@ import { CreatePaymentDto } from 'src/modules/payments/dtos/payment-dtos.barrel'
 import { PaymentEntity } from '../../payment.entity';
 import { Amount, CreatedAt, Description, Discount, Id } from './types/payment-type.barril';
 
-interface PaymentProps {
+interface PaymentEntityProps {
     id?: Id;
     amount: Amount;
     discount: Discount;
@@ -12,7 +12,7 @@ interface PaymentProps {
 }
 
 export class PaymentInMemoryEntity implements PaymentEntity {
-    private constructor(private readonly props: PaymentProps) {}
+    constructor(private readonly props: PaymentEntityProps) {}
 
     get id(): string {
         return this.props.id.value;
@@ -34,19 +34,15 @@ export class PaymentInMemoryEntity implements PaymentEntity {
         return this.props.createdAt.value;
     }
 
-    static create(dto: CreatePaymentDto): PaymentEntity {
-        const idFactory = Id.create(randomUUID());
-        const amountFactory = Amount.create(dto.amount);
-        const discountFactory = Discount.create(dto.discount);
-        const descriptionFactory = Description.create(dto.description);
-        const createdAtFactory = CreatedAt.create(new Date());
+    static create(dto: CreatePaymentDto): PaymentInMemoryEntity {
+        const factory: PaymentEntityProps = {
+            id: Id.create(randomUUID()),
+            amount: Amount.create(dto.amount),
+            discount: Discount.create(dto.discount),
+            description: Description.create(dto.description),
+            createdAt: CreatedAt.create(new Date()),
+        };
 
-        return new PaymentInMemoryEntity({
-            id: idFactory,
-            amount: amountFactory,
-            discount: discountFactory,
-            description: descriptionFactory,
-            createdAt: createdAtFactory,
-        });
+        return new PaymentInMemoryEntity(factory);
     }
 }

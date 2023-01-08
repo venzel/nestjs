@@ -1,7 +1,9 @@
 import { PaymentEntity } from '../domain/payment.entity';
-import { ResponsePaymentDto } from '../dtos/payment-dtos.barrel';
+import { CreatePaymentDto, ResponsePaymentDto } from '../dtos/payment-dtos.barrel';
 
 export interface PaymentMapper {
+    toEntity(createPaymentDto: CreatePaymentDto): PaymentEntity;
+
     toDto(payment: PaymentEntity): ResponsePaymentDto;
 
     toListDto(payments: PaymentEntity[]): ResponsePaymentDto[];

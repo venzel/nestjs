@@ -1,4 +1,3 @@
-import { CreatedAtError } from './../../errors/impl/payment-created-at.error';
 import { randomUUID } from 'node:crypto';
 import { Either, left, right } from 'src/core/utils/either';
 import { CreatePaymentDto } from '../../../dtos/impl/create-payment.dto';
@@ -9,14 +8,15 @@ import {
     IdError,
 } from '../../errors/payment-errors.barrel';
 import { PaymentEntity } from '../../payment.entity';
-import { Amount, Description, Discount, Id, CreatedAt } from './types/payment-types.barrel';
+import { CreatedAtError } from './../../errors/impl/payment-created-at.error';
+import { Amount, CreatedAt, Description, Discount, Id } from './types/payment-types.barrel';
 
 export interface PaymentEntityProps {
-    readonly id: Id;
-    readonly amount: Amount;
-    readonly discount: Discount;
-    readonly description: Description;
-    readonly createdAt: CreatedAt;
+    id: Id;
+    amount: Amount;
+    discount: Discount;
+    description: Description;
+    createdAt: CreatedAt;
 }
 
 export type PaymentEntityError =
@@ -27,9 +27,7 @@ export type PaymentEntityError =
     | CreatedAtError;
 
 export class PaymentEitherEntity implements PaymentEntity {
-    constructor(private readonly props: PaymentEntityProps) {
-        Object.freeze(this);
-    }
+    constructor(private readonly props: PaymentEntityProps) {}
 
     get id(): string {
         return this.props.id.value;
@@ -37,6 +35,10 @@ export class PaymentEitherEntity implements PaymentEntity {
 
     get amount(): Number {
         return this.props.amount.value;
+    }
+
+    set amount(value: Number) {
+        this.amount = value;
     }
 
     get discount(): Number {
@@ -52,46 +54,31 @@ export class PaymentEitherEntity implements PaymentEntity {
     }
 
     static create(dto: CreatePaymentDto): Either<PaymentEntityError, PaymentEitherEntity> {
-        let { amount, discount, description } = dto;
+        const { amount, discount, description } = dto;
 
-        const id = randomUUID();
-        const createdAt = new Date();
+        const id = randomUUID(),
+            date = new Date();
 
-        const mapFactory = {
-            id: {
-                of: Id.create(id),
-                error: new IdError(id),
-            },
-            amount: {
-                of: Amount.create(amount),
-                error: new AmountError(amount.toString()),
-            },
-            discount: {
-                of: Discount.create(discount),
-                error: new DiscountError(discount.toString()),
-            },
-            description: {
-                of: Description.create(description),
-                error: new DescriptionError(description.toString()),
-            },
-            createdAt: {
-                of: CreatedAt.create(createdAt),
-                error: new CreatedAtError(createdAt.toString()),
-            },
+        const IdOrError = Id.create(id),
+            AmountOrError = Amount.create(amount),
+            DiscountOrError = Discount.create(discount),
+            DescriptionOrError = Description.create(description),
+            CreatedAtOrError = CreatedAt.create(date);
+
+        if (IdOrError.isLeft()) return left(new IdError(id));
+        if (AmountOrError.isLeft()) return left(new AmountError(amount.toString()));
+        if (DiscountOrError.isLeft()) return left(new DiscountError(discount.toString()));
+        if (DescriptionOrError.isLeft()) return left(new DescriptionError(description));
+        if (CreatedAtOrError.isLeft()) return left(new CreatedAtError(date.toString()));
+
+        const factory: PaymentEntityProps = {
+            id: IdOrError.value,
+            amount: AmountOrError.value,
+            discount: DiscountOrError.value,
+            description: DescriptionOrError.value,
+            createdAt: CreatedAtOrError.value,
         };
 
-        for (const { of, error } of Object.values(mapFactory)) {
-            if (of.isLeft()) {
-                return left(error);
-            }
-        }
-
-        const data = Object.entries(mapFactory).map(([key, value]) => {
-            return {
-                [key]: value.of.value,
-            };
-        }) as undefined as PaymentEntityProps;
-
-        return right(new PaymentEitherEntity(data));
+        return right(new PaymentEitherEntity(factory));
     }
 }

@@ -1,26 +1,19 @@
-import { Injectable } from '@nestjs/common';
-import { PaymentInMemoryEntity } from 'src/modules/payments/domain/impl/in-memory/payment-in-memory.entity';
+import { Inject } from '@nestjs/common';
 import { PaymentEntity } from 'src/modules/payments/domain/payment.entity';
 import {
     CreatePaymentDto,
     ResponsePaymentDto,
 } from 'src/modules/payments/dtos/payment-dtos.barrel';
-import { PaymentInMemoryMapper } from 'src/modules/payments/mappers/impl/in-memory/payment-in-memory.mapper';
 import { PaymentMapper } from 'src/modules/payments/mappers/payment.mapper';
 import { PaymentRepository } from '../../payment.repository';
 
-@Injectable()
 export class PaymentInMemoryRepository implements PaymentRepository {
-    private readonly paymentRepository: PaymentEntity[];
-    private readonly paymentMapper: PaymentMapper;
+    private readonly paymentRepository: PaymentEntity[] = [];
 
-    constructor() {
-        this.paymentRepository = new Array<PaymentInMemoryEntity>();
-        this.paymentMapper = new PaymentInMemoryMapper();
-    }
+    constructor(@Inject('PAYMENT_MAPPER') private readonly paymentMapper: PaymentMapper) {}
 
     async create(createPaymentDto: CreatePaymentDto): Promise<ResponsePaymentDto> {
-        const payment = PaymentInMemoryEntity.create(createPaymentDto);
+        const payment = this.paymentMapper.toEntity(createPaymentDto);
 
         this.paymentRepository.push(payment);
 

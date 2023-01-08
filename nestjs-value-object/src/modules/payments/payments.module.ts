@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { PaymentsController } from './controllers/payments.controller';
-import { PaymentInMemoryMapper } from './mappers/impl/in-memory/payment-in-memory.mapper';
+import { PaymentEitherMapper } from './mappers/impl/either/payment-either.mapper';
 import { PaymentInMemoryRepository } from './repositories/impl/in-memory/payment-in-memory.repository';
 import { PaymentServicesAdapter } from './services/payment-services.adapter';
 import {
@@ -16,11 +16,13 @@ import {
         FindOnePaymentService,
         CreatePaymentService,
         ListPaymentsService,
-        PaymentInMemoryMapper,
-        PaymentInMemoryRepository,
         {
             provide: 'PAYMENT_REPOSITORY',
             useClass: PaymentInMemoryRepository,
+        },
+        {
+            provide: 'PAYMENT_MAPPER',
+            useClass: PaymentEitherMapper,
         },
     ],
 })

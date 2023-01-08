@@ -23,10 +23,6 @@ export class Description {
             return false;
         }
 
-        if (description.length < 10 || description.length > 255) {
-            return false;
-        }
-
         return true;
     }
 }
