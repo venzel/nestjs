@@ -5,8 +5,8 @@ import {
     CreatePaymentDto,
     ResponsePaymentDto,
 } from 'src/modules/payments/dtos/payment-dtos.barrel';
-import { PaymentInMemoryMapper } from 'src/modules/payments/mapers/impl/in-memory/payment-in-memory.mapper';
-import { PaymentMapper } from 'src/modules/payments/mapers/payment.mapper';
+import { PaymentInMemoryMapper } from 'src/modules/payments/mappers/impl/in-memory/payment-in-memory.mapper';
+import { PaymentMapper } from 'src/modules/payments/mappers/payment.mapper';
 import { PaymentRepository } from '../../payment.repository';
 
 @Injectable()
