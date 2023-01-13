@@ -1,4 +1,6 @@
-# NestJs + Kafka
+# NestJs Value Object
+
+Arquitetura de uma api rest com NestJs, utilizando a modelagem de domínios ricos, através da técnica value object, tratamento de exceções com either e transformações de dados utilizando os conceitos de dtos e mappers.
 
 **REFERÊNCIAS:**
 
@@ -8,7 +10,7 @@
 
 ## Pré requisitos
 
--   NodeJs ^14.15.0 || >=16.10.0, versão corrente 18.12.1
+-   NodeJs ^14.15.0 || >= 16.10.0, versão corrente 18.12.1
 -   Npm, versão corrente 8.19.2
 -   CLI NestJs, versão corrente 9.1.5
 
