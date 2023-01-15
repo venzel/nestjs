@@ -1,13 +1,14 @@
 import { CallHandler, ExecutionContext, Inject, Injectable, NestInterceptor } from '@nestjs/common';
+import { Request } from 'express';
 import { Observable } from 'rxjs';
-import { Logger } from 'winston';
 import { tap } from 'rxjs/operators';
+import { Logger } from 'winston';
 
 @Injectable()
 export class LoggerInterceptor implements NestInterceptor {
     constructor(@Inject('winston') private logger: Logger) {}
 
-    private execute(req: any, now: number) {
+    private execute(req: Request, now: number) {
         this.logger.info({
             by: 'eneas.eng@yahoo.com',
             ip: req.ip,

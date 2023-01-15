@@ -1,4 +1,4 @@
-import { Inject } from '@nestjs/common';
+import { ConflictException, Inject } from '@nestjs/common';
 import { PaymentEntity } from 'src/modules/payments/domain/payment.entity';
 import {
     CreatePaymentDto,
@@ -12,8 +12,20 @@ export class PaymentInMemoryRepository implements PaymentRepository {
 
     constructor(@Inject('PAYMENT_MAPPER') private readonly paymentMapper: PaymentMapper) {}
 
-    async create(createPaymentDto: CreatePaymentDto): Promise<ResponsePaymentDto> {
-        const payment = this.paymentMapper.toEntity(createPaymentDto);
+    async create(dto: CreatePaymentDto): Promise<ResponsePaymentDto> {
+        const { id } = dto;
+
+        if (id) {
+            const existsPayment = await this.findOneById(id);
+
+            if (existsPayment) {
+                throw new ConflictException(`Id ${id} already exists!`);
+            }
+
+            dto.id = id;
+        }
+
+        const payment = this.paymentMapper.toEntity(dto);
 
         this.paymentRepository.push(payment);
 

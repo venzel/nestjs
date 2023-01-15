@@ -1,9 +1,9 @@
 export class ResponsePaymentDto {
-    private readonly id: string;
-    private readonly amount: Number;
-    private readonly discount: Number;
-    private readonly description: string;
-    private readonly createdAt: Date;
+    readonly id: string;
+    readonly amount: Number;
+    readonly discount: Number;
+    readonly description: string;
+    readonly createdAt: Date;
 
     private constructor(
         id: string,

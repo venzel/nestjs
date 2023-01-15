@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import { UserIdCheckMiddleware } from './../../core/middlewares/user-id-check.middleware';
 import { PaymentsController } from './controllers/payments.controller';
 import { PaymentEitherMapper } from './mappers/impl/either/payment-either.mapper';
 import { PaymentInMemoryRepository } from './repositories/impl/in-memory/payment-in-memory.repository';
@@ -26,4 +27,11 @@ import {
         },
     ],
 })
-export class PaymentsModule {}
+export class PaymentsModule implements NestModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer.apply(UserIdCheckMiddleware).forRoutes({
+            path: 'payments/:id',
+            method: RequestMethod.ALL,
+        });
+    }
+}

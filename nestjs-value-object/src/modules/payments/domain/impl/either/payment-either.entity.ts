@@ -54,18 +54,18 @@ export class PaymentEitherEntity implements PaymentEntity {
     }
 
     static create(dto: CreatePaymentDto): Either<PaymentEntityError, PaymentEitherEntity> {
-        const { amount, discount, description } = dto;
+        const { id, amount, discount, description } = dto;
 
-        const id = randomUUID(),
+        const uuid = randomUUID(),
             date = new Date();
 
-        const IdOrError = Id.create(id),
+        const IdOrError = Id.create(id || uuid),
             AmountOrError = Amount.create(amount),
             DiscountOrError = Discount.create(discount),
             DescriptionOrError = Description.create(description),
             CreatedAtOrError = CreatedAt.create(date);
 
-        if (IdOrError.isLeft()) return left(new IdError(id));
+        if (IdOrError.isLeft()) return left(new IdError(uuid));
         if (AmountOrError.isLeft()) return left(new AmountError(amount.toString()));
         if (DiscountOrError.isLeft()) return left(new DiscountError(discount.toString()));
         if (DescriptionOrError.isLeft()) return left(new DescriptionError(description));

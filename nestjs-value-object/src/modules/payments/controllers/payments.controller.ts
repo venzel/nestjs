@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreatePaymentDto } from '../dtos/payment-dtos.barrel';
+import { Body, Controller, Get, Param, Post, UseInterceptors } from '@nestjs/common';
+import { NotContentInterceptor } from 'src/core/interceptors/not-content.interceptor';
+import { CreatePaymentDto, ResponsePaymentDto } from '../dtos/payment-dtos.barrel';
 import { PaymentServicesAdapter } from '../services/payment-services.adapter';
 
 @Controller('payments')
@@ -7,17 +8,18 @@ export class PaymentsController {
     constructor(private readonly paymentsServiceAdapter: PaymentServicesAdapter) {}
 
     @Post()
-    create(@Body() createPaymentDto: CreatePaymentDto) {
-        return this.paymentsServiceAdapter.create(createPaymentDto);
+    async create(@Body() createPaymentDto: CreatePaymentDto): Promise<ResponsePaymentDto> {
+        return await this.paymentsServiceAdapter.create(createPaymentDto);
     }
 
+    @UseInterceptors(NotContentInterceptor)
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.paymentsServiceAdapter.findOne(id);
+    async findOne(@Param('id') id: string): Promise<ResponsePaymentDto> {
+        return await this.paymentsServiceAdapter.findOne(id);
     }
 
     @Get()
-    list() {
-        return this.paymentsServiceAdapter.list();
+    async list(): Promise<ResponsePaymentDto[]> {
+        return await this.paymentsServiceAdapter.list();
     }
 }

@@ -36,7 +36,7 @@ export class PaymentInMemoryEntity implements PaymentEntity {
 
     static create(dto: CreatePaymentDto): PaymentInMemoryEntity {
         const factory: PaymentEntityProps = {
-            id: Id.create(randomUUID()),
+            id: Id.create(dto.id || randomUUID()),
             amount: Amount.create(dto.amount),
             discount: Discount.create(dto.discount),
             description: Description.create(dto.description),
