@@ -1,6 +1,6 @@
-import { ForbiddenException } from '@nestjs/common';
+import { UnprocessableEntityException } from '@nestjs/common';
 
-export class AmountError extends ForbiddenException {
+export class AmountError extends UnprocessableEntityException {
     readonly value: string = 'AmountError';
 
     constructor(amount: string) {

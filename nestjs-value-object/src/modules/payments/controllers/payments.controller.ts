@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
+import { ParamUUID } from 'src/core/decorators/param-uuid.decorator';
 import { NotContentInterceptor } from 'src/core/interceptors/not-content.interceptor';
 import { CreatePaymentDto, ResponsePaymentDto } from '../dtos/payment-dtos.barrel';
 import { PaymentServicesAdapter } from '../services/payment-services.adapter';
@@ -14,7 +15,7 @@ export class PaymentsController {
 
     @UseInterceptors(NotContentInterceptor)
     @Get(':id')
-    async findOne(@Param('id') id: string): Promise<ResponsePaymentDto> {
+    async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
         return await this.paymentsServiceAdapter.findOne(id);
     }
 

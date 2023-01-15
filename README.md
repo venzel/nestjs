@@ -38,22 +38,22 @@ nest g res payments --no-spec
 
 ```json
 {
-- "jsc": {
-- - "parser": {
-- - - "syntax": "typescript",
-- - - "tsx": false,
-- - - "decorators": true
-- - },
-- - "target": "es2017",
-- - "keepClassNames": true,
-- - "transform": {
-- - - "legacyDecorator": true,
-- - - "decoratorMetadata": true
-- - }
-- },
-- "module": {
-- - "type": "commonjs"
-- }
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": false,
+            "decorators": true
+        },
+        "target": "es2017",
+        "keepClassNames": true,
+        "transform": {
+            "legacyDecorator": true,
+            "decoratorMetadata": true
+        }
+    },
+    "module": {
+        "type": "commonjs"
+    }
 }
 ```
 
@@ -63,7 +63,7 @@ no arquivo tsconfig.json, adicionar a linha:
 
 ```json
 {
-- "strict": true
+    "strict": true
 }
 ```
 
@@ -83,19 +83,19 @@ yarn start:dev
 
 ## Parse Pipe Int na controller
 
-![Parse Pipe Int na controller](./images/pipe-int.png)
+![Parse pipe int](./images/pipe-int.png)
 
 ## Alguns pipes existentes
 
-![Parse Pipe Int na controller](./images/pipes.png)
+![Pipes](./images/pipes.png)
 
 ## Comparativos de ORM
 
-![Parse Pipe Int na controller](./images/comparativo-orm.png)
+![ORMS](./images/comparativo-orm.png)
 
 ## Exceções nativas do NestJs
 
-![Parse Pipe Int na controller](./images/buit-in-exceptions.png)
+![Exceptions](./images/buit-in-exceptions.png)
 
 ## Códigos de erros
 
@@ -147,5 +147,9 @@ yarn start:dev
 -   SERVICE_UNAVAILABLE = 503
 -   GATEWAY_TIMEOUT = 504
 -   HTTP_VERSION_NOT_SUPPORTED = 505
+
+## Decorators
+
+![Decorators](./images/decorators.png)
 
 \* Imagens por João Rangel
