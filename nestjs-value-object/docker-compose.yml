@@ -1,0 +1,26 @@
+version: '3'
+services:
+    postgres:
+        image: postgres:11
+        container_name: payment-typeorm
+        restart: always
+        environment:
+            - POSTGRES_DB=payment
+            - POSTGRES_USER=payment
+            - POSTGRES_PASSWORD=payment
+        ports:
+            - 5434:5432
+        volumes:
+            - ./docker/postgres/data:/var/lib/postgresql/data
+    mongodb:
+        container_name: payment-mongo
+        image: mongo:latest
+        restart: always
+        ports:
+            - 27019:27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: payment
+            MONGO_INITDB_ROOT_PASSWORD: payment
+        volumes:
+            - ./docker/mongodb/entrypoints/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            - ./docker/mongodb/data:/data/db
