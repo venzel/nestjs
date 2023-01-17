@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { Either, left, right } from 'src/core/utils/either';
+import { Either, left, right } from 'src/core/helpers/either';
 import { CreatePaymentDto } from '../../dtos/impl/create-payment.dto';
 import {
     AmountError,

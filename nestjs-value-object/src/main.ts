@@ -2,14 +2,14 @@ import { ClassSerializerInterceptor } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import baseConfig from './core/configs/base.config';
-import { HttpExceptionFilter } from './core/exceptions/http.exception.filter';
+import { GlobalHttpFilterException } from './core/exceptions/global-http-filter.exception';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     app.enableCors();
 
-    app.useGlobalFilters(new HttpExceptionFilter());
+    app.useGlobalFilters(new GlobalHttpFilterException());
 
     app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 

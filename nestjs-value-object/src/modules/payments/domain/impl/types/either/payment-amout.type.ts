@@ -1,4 +1,4 @@
-import { Either, left, right } from 'src/core/utils/either';
+import { Either, left, right } from 'src/core/helpers/either';
 import { AmountError } from 'src/modules/payments/errors/payment-errors.barrel';
 
 export class Amount {

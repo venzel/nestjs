@@ -1,9 +1,10 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { generateId } from 'src/core/helpers/generate-id.helper';
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 import { PaymentEntity } from '../../../domain/payment.entity';
 
 @Entity('payments')
 export class PaymentTypeormEntity extends BaseEntity implements PaymentEntity {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn()
     id: string;
 
     @Column()
@@ -15,6 +16,14 @@ export class PaymentTypeormEntity extends BaseEntity implements PaymentEntity {
     @Column()
     description: string;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ name: 'created_at', type: 'timestamptz', nullable: false })
     createdAt: Date;
+
+    constructor() {
+        super();
+
+        if (!this.id) {
+            this.id = generateId('HASH');
+        }
+    }
 }

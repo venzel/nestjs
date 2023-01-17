@@ -18,7 +18,11 @@
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
         "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-        "test:e2e": "jest --config ./test/jest-e2e.json"
+        "test:e2e": "jest --config ./test/jest-e2e.json",
+        "typeorm:ts": "typeorm-ts-node-esm",
+        "migration:create": "yarn typeorm:ts migration:create -- ./src/core/database/typeorm/migrations/migrate",
+        "migration:up": "yarn typeorm:ts migration:run -- -d ./src/core/database/typeorm/typeorm-data.source.ts",
+        "migration:revert": "yarn typeorm:ts migration:revert -- -d ./src/core/database/typeorm/typeorm-data.source.ts"
     },
     "dependencies": {
         "@nestjs/common": "^9.0.0",
@@ -29,7 +33,6 @@
         "@nestjs/typeorm": "^9.0.1",
         "@swc/jest": "^0.2.24",
         "class-transformer": "^0.5.1",
-        "crypto": "^1.0.1",
         "nest-winston": "^1.8.0",
         "pg": "^8.8.0",
         "reflect-metadata": "^0.1.13",
@@ -49,6 +52,7 @@
         "@types/supertest": "^2.0.11",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
+        "dotenv": "^16.0.3",
         "eslint": "^8.0.1",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-prettier": "^4.0.0",

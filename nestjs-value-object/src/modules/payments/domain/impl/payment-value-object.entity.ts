@@ -11,7 +11,7 @@ interface PaymentEntityProps {
     createdAt: CreatedAt;
 }
 
-export class PaymentInMemoryEntity implements PaymentEntity {
+export class PaymentValueObjectEntity implements PaymentEntity {
     constructor(private readonly props: PaymentEntityProps) {}
 
     get id(): string {
@@ -34,7 +34,7 @@ export class PaymentInMemoryEntity implements PaymentEntity {
         return this.props.createdAt.value;
     }
 
-    static create(dto: CreatePaymentDto): PaymentInMemoryEntity {
+    static create(dto: CreatePaymentDto): PaymentValueObjectEntity {
         const factory: PaymentEntityProps = {
             id: Id.create(dto.id || randomUUID()),
             amount: Amount.create(dto.amount),
@@ -43,6 +43,6 @@ export class PaymentInMemoryEntity implements PaymentEntity {
             createdAt: CreatedAt.create(new Date()),
         };
 
-        return new PaymentInMemoryEntity(factory);
+        return new PaymentValueObjectEntity(factory);
     }
 }
