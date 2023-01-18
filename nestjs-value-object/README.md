@@ -38,6 +38,7 @@ nest g res payments --no-spec
 
 -   Padronização de commits (conventional commits);
 -   Utilização de conceitos de módulos da arquitetura DDD;
+-   Versionamento de módulos
 -   Modelagem de entidades ricas com tratamento de exceções (Either) (DDD);
 -   Desenvolvimento guiado a testes (TDD);
 -   Chaveamento nas injeções de dependências;
@@ -89,7 +90,7 @@ yarn migration:up
 
 ```bash
 # Rodará as migrations do caminho src/core/database/typeorm/migrations
-yarn migration:revert
+yarn migration:down
 ```
 
 ## Para acelelar o transpile, necessário criar o arquivo .swcrc com o conteúdo:

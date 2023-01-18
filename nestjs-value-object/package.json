@@ -21,8 +21,8 @@
         "test:e2e": "jest --config ./test/jest-e2e.json",
         "typeorm:ts": "typeorm-ts-node-esm",
         "migration:create": "yarn typeorm:ts migration:create -- ./src/core/database/typeorm/migrations/migrate",
-        "migration:up": "yarn typeorm:ts migration:run -- -d ./src/core/database/typeorm/typeorm-data.source.ts",
-        "migration:revert": "yarn typeorm:ts migration:revert -- -d ./src/core/database/typeorm/typeorm-data.source.ts"
+        "migration:up": "yarn typeorm:ts migration:run -- -d ./src/core/database/typeorm/typeorm-datasource.ts",
+        "migration:down": "yarn typeorm:ts migration:revert -- -d ./src/core/database/typeorm/typeorm-datasource.ts"
     },
     "dependencies": {
         "@nestjs/common": "^9.0.0",

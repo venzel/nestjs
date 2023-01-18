@@ -1,4 +1,4 @@
-import { ClassSerializerInterceptor } from '@nestjs/common';
+import { ClassSerializerInterceptor, VersioningType } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import baseConfig from './core/configs/base.config';
@@ -12,6 +12,10 @@ async function bootstrap() {
     app.useGlobalFilters(new GlobalHttpFilterException());
 
     app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
+
+    app.enableVersioning({
+        type: VersioningType.URI,
+    });
 
     const config = baseConfig();
 

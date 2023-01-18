@@ -6,11 +6,13 @@ import baseConfig from './core/configs/base.config';
 import typeormConfig from './core/configs/typeorm.config';
 import { winstonConfig } from './core/configs/winston.config';
 import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
-import { PaymentsModule } from './modules/payments/payments.module';
+import { PaymentsV1Module } from './modules/v1/payments/payments-v1.module';
+import { PaymentsV2Module } from './modules/v2/payments/payments-v2.module';
 
 @Module({
     imports: [
-        PaymentsModule,
+        PaymentsV1Module,
+        PaymentsV2Module,
         WinstonModule.forRoot(winstonConfig),
         ConfigModule.forRoot({
             isGlobal: true,
