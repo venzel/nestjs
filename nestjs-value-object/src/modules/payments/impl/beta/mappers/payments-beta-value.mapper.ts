@@ -3,7 +3,7 @@ import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/inter
 import { ResponsePaymentBetaDto } from '../dtos';
 import { PaymentBetaValueEntity } from '../entities/payment-beta-value.entity';
 
-export class PaymentsValueMapper implements PaymentsMapper {
+export class PaymentsBetaValueMapper implements PaymentsMapper {
     toEntity(createPaymentDto: CreatePaymentDto): PaymentBetaValueEntity {
         return PaymentBetaValueEntity.create(createPaymentDto);
     }

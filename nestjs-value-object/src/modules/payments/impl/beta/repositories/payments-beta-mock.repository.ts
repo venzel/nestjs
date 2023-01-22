@@ -1,8 +1,7 @@
-import { ConflictException, Inject, Injectable } from '@nestjs/common';
+import { ConflictException, Inject } from '@nestjs/common';
 import { PaymentEntity, PaymentsMapper, PaymentsRepository } from 'src/modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
 
-@Injectable()
 export class PaymentsBetaMockRepository implements PaymentsRepository {
     private readonly paymentRepository: PaymentEntity[] = [];
 
@@ -10,8 +9,6 @@ export class PaymentsBetaMockRepository implements PaymentsRepository {
 
     async create(dto: CreatePaymentDto): Promise<ResponsePaymentDto> {
         const { id } = dto;
-
-        console.log(`ake`);
 
         if (id) {
             const existsPayment = await this.findOneById(id);

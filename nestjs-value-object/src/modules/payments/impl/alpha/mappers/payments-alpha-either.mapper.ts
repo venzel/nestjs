@@ -1,10 +1,9 @@
-import { Injectable, UnprocessableEntityException } from '@nestjs/common';
+import { UnprocessableEntityException } from '@nestjs/common';
 import { PaymentsMapper } from 'src/modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
 import { ResponsePaymentAlphaDto } from '../dtos';
 import { PaymentAlphaEitherEntity } from '../entities/payment-alpha-either.entity';
 
-@Injectable()
 export class PaymentsAlphaEitherMapper implements PaymentsMapper {
     toEntity(createPaymentDto: CreatePaymentDto): PaymentAlphaEitherEntity {
         const PaymentOrError = PaymentAlphaEitherEntity.create(createPaymentDto);
