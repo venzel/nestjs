@@ -6,13 +6,15 @@ import baseConfig from './core/configs/base.config';
 import typeormConfig from './core/configs/typeorm.config';
 import { winstonConfig } from './core/configs/winston.config';
 import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
-import { PaymentsV1Module } from './modules/payments/impl/v1/payments-v1.module';
-import { PaymentsV2Module } from './modules/payments/impl/v2/payments-v2.module';
+import { PaymentsAlphaModule } from './modules/payments/impl/alpha/payments-alpha.module';
+import { PaymentsBetaModule } from './modules/payments/impl/beta/payments-beta.module';
+import { PaymentsOmegaModule } from './modules/payments/impl/omega/payments-omega.module';
 
 @Module({
     imports: [
-        PaymentsV1Module,
-        PaymentsV2Module,
+        PaymentsAlphaModule,
+        PaymentsBetaModule,
+        PaymentsOmegaModule,
         WinstonModule.forRoot(winstonConfig),
         ConfigModule.forRoot({
             isGlobal: true,
