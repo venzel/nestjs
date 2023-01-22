@@ -9,9 +9,11 @@ import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
 import { PaymentsAlphaModule } from './modules/payments/impl/alpha/payments-alpha.module';
 import { PaymentsBetaModule } from './modules/payments/impl/beta/payments-beta.module';
 import { PaymentsOmegaModule } from './modules/payments/impl/omega/payments-omega.module';
+import { UsersAlphaModule } from './modules/users/impl/alpha/users-alpha.module';
 
 @Module({
     imports: [
+        UsersAlphaModule,
         PaymentsAlphaModule,
         PaymentsBetaModule,
         PaymentsOmegaModule,

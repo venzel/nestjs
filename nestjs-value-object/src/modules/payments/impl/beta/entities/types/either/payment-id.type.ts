@@ -8,7 +8,7 @@ export class Id {
 
     static create(id: string): Either<IdError, Id> {
         if (!this.validate(id)) {
-            return left(new IdError(id.toString()));
+            return left(new IdError(id));
         }
 
         return right(new Id(id));

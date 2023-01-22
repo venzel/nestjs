@@ -8,7 +8,7 @@ export class Description {
 
     static create(description: string): Either<DescriptionError, Description> {
         if (!this.validate(description)) {
-            return left(new DescriptionError(`Description ${description} invalid!`));
+            return left(new DescriptionError(description));
         }
 
         return right(new Description(description));

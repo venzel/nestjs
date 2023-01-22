@@ -8,7 +8,7 @@ export class CreatedAt {
 
     static create(createdAt: Date): Either<CreatedAtError, CreatedAt> {
         if (!this.valcreatedAtate(createdAt)) {
-            return left(new CreatedAtError(createdAt.toString()));
+            return left(new CreatedAtError(createdAt));
         }
 
         return right(new CreatedAt(createdAt));

@@ -1,39 +1,40 @@
 import { ConflictException, Inject } from '@nestjs/common';
 import { PaymentEntity, PaymentsMapper, PaymentsRepository } from 'src/modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { randomUUID } from 'node:crypto';
 
 export class PaymentsBetaMockRepository implements PaymentsRepository {
-    private readonly paymentRepository: PaymentEntity[] = [];
+    private readonly repository: PaymentEntity[] = [];
 
-    constructor(@Inject('PAYMENT_MAPPER') private readonly paymentMapper: PaymentsMapper) {}
+    constructor(@Inject('PAYMENT_MAPPER') private readonly mapper: PaymentsMapper) {}
 
     async create(dto: CreatePaymentDto): Promise<ResponsePaymentDto> {
         const { id } = dto;
 
-        if (id) {
+        if (!id) {
+            dto.id = randomUUID();
+        } else {
             const existsPayment = await this.findOneById(id);
 
             if (existsPayment) {
                 throw new ConflictException(`Id ${id} already exists!`);
             }
-
-            dto.id = id;
         }
 
-        const payment = this.paymentMapper.toEntity(dto);
+        const payment = this.mapper.toEntity(dto);
 
-        this.paymentRepository.push(payment);
+        this.repository.push(payment);
 
-        return this.paymentMapper.toDto(payment);
+        return this.mapper.toDto(payment);
     }
 
     async findOneById(paymentId: string): Promise<ResponsePaymentDto | undefined> {
-        const existsPayment = this.paymentRepository.find(({ id }) => id === paymentId);
+        const existsPayment = this.repository.find(({ id }) => id === paymentId);
 
-        return existsPayment ? this.paymentMapper.toDto(existsPayment) : undefined;
+        return existsPayment ? this.mapper.toDto(existsPayment) : undefined;
     }
 
     async list(): Promise<ResponsePaymentDto[]> {
-        return this.paymentMapper.toListDto(this.paymentRepository);
+        return this.mapper.toListDto(this.repository);
     }
 }

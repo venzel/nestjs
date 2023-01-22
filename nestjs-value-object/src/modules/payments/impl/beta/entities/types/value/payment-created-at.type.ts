@@ -7,7 +7,7 @@ export class CreatedAt {
         const isValid = CreatedAt.validate(createdAt);
 
         if (!isValid) {
-            throw new CreatedAtError(createdAt.toString());
+            throw new CreatedAtError(createdAt);
         }
 
         this.createdAt = createdAt;

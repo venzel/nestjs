@@ -7,7 +7,7 @@ export class Description {
         const isValid = Description.validate(description);
 
         if (!isValid) {
-            throw new DescriptionError(description.toString());
+            throw new DescriptionError(description);
         }
 
         this.description = description;

@@ -7,7 +7,7 @@ export class Id {
         const isValid = Id.validate(id);
 
         if (!isValid) {
-            throw new IdError(id.toString());
+            throw new IdError(id);
         }
 
         this.id = id;

@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 const nameTable = 'payments',
     nameUniqueIdxDescription = 'UQ__PAYMENTS_DESCRIPTION';

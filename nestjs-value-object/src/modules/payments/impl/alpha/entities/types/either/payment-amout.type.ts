@@ -8,7 +8,7 @@ export class Amount {
 
     static create(amount: Number): Either<AmountError, Amount> {
         if (!this.validate(amount)) {
-            return left(new AmountError(amount.toString()));
+            return left(new AmountError(amount));
         }
 
         return right(new Amount(amount));

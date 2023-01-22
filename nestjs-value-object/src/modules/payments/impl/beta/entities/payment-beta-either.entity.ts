@@ -66,10 +66,10 @@ export class PaymentBetaEitherEntity implements PaymentEntity {
             CreatedAtOrError = CreatedAt.create(date);
 
         if (IdOrError.isLeft()) return left(new IdError(uuid));
-        if (AmountOrError.isLeft()) return left(new AmountError(amount.toString()));
-        if (DiscountOrError.isLeft()) return left(new DiscountError(discount.toString()));
+        if (AmountOrError.isLeft()) return left(new AmountError(amount));
+        if (DiscountOrError.isLeft()) return left(new DiscountError(discount));
         if (DescriptionOrError.isLeft()) return left(new DescriptionError(description));
-        if (CreatedAtOrError.isLeft()) return left(new CreatedAtError(date.toString()));
+        if (CreatedAtOrError.isLeft()) return left(new CreatedAtError(date));
 
         const factory: PaymentEntityProps = {
             id: IdOrError.value,

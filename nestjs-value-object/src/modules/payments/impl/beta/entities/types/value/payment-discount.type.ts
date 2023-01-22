@@ -7,7 +7,7 @@ export class Discount {
         const isValid = Discount.validate(discount);
 
         if (!isValid) {
-            throw new DiscountError(discount.toString());
+            throw new DiscountError(discount);
         }
 
         this.discount = discount;

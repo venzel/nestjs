@@ -8,7 +8,7 @@ export class Discount {
 
     static create(discount: Number): Either<DiscountError, Discount> {
         if (!this.validate(discount)) {
-            return left(new DiscountError(`Discount ${discount.toString()} invalid!`));
+            return left(new DiscountError(discount));
         }
 
         return right(new Discount(discount));

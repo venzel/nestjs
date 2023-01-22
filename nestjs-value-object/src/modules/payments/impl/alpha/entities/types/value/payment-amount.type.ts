@@ -7,7 +7,7 @@ export class Amount {
         const isValid = Amount.validate(amount);
 
         if (!isValid) {
-            throw new AmountError(amount.toString());
+            throw new AmountError(amount);
         }
 
         this.amount = amount;
