@@ -17,7 +17,7 @@ export const datasourceProvider = [
                 entities: [
                     __dirname + '/../../../modules/**/infra/typeorm/entities/*.entity{.ts,.js}',
                 ],
-                synchronize: true,
+                // synchronize: true,
                 connectTimeoutMS: 3000,
             });
 

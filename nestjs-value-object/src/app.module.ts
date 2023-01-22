@@ -6,8 +6,8 @@ import baseConfig from './core/configs/base.config';
 import typeormConfig from './core/configs/typeorm.config';
 import { winstonConfig } from './core/configs/winston.config';
 import { LoggerInterceptor } from './core/interceptors/logger.interceptor';
-import { PaymentsV1Module } from './modules/v1/payments/payments-v1.module';
-import { PaymentsV2Module } from './modules/v2/payments/payments-v2.module';
+import { PaymentsV1Module } from './modules/payments/impl/v1/payments-v1.module';
+import { PaymentsV2Module } from './modules/payments/impl/v2/payments-v2.module';
 
 @Module({
     imports: [
