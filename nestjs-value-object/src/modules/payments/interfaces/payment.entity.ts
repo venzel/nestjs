@@ -1,7 +1,7 @@
 export interface PaymentEntity {
     readonly id: string;
-    readonly amount: Number;
-    readonly discount: Number;
+    readonly amount: number;
+    readonly discount: number;
     readonly description: string;
     readonly createdAt: Date;
 }

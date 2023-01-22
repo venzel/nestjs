@@ -2,11 +2,11 @@ import { Either, left, right } from 'src/core/helpers/either';
 import { DiscountError } from '../errors';
 
 export class Discount {
-    private constructor(private readonly discount: Number) {
+    private constructor(private readonly discount: number) {
         Object.freeze(this);
     }
 
-    static create(discount: Number): Either<DiscountError, Discount> {
+    static create(discount: number): Either<DiscountError, Discount> {
         if (!this.validate(discount)) {
             return left(new DiscountError(discount));
         }
@@ -14,11 +14,11 @@ export class Discount {
         return right(new Discount(discount));
     }
 
-    get value(): Number {
+    get value(): number {
         return this.discount;
     }
 
-    static validate(discount: Number): boolean {
+    static validate(discount: number): boolean {
         if (!discount) {
             return false;
         }

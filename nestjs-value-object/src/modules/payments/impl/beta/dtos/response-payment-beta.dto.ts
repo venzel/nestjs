@@ -1,14 +1,14 @@
 export class ResponsePaymentBetaDto {
     readonly id: string;
-    readonly amount: Number;
-    readonly discount: Number;
+    readonly amount: number;
+    readonly discount: number;
     readonly description: string;
     readonly createdAt: Date;
 
     private constructor(
         id: string,
-        amount: Number,
-        discount: Number,
+        amount: number,
+        discount: number,
         description: string,
         createdAt: Date,
     ) {
@@ -21,8 +21,8 @@ export class ResponsePaymentBetaDto {
 
     static create(
         id: string,
-        amount: Number,
-        discount: Number,
+        amount: number,
+        discount: number,
         description: string,
         createdAt: Date,
     ) {

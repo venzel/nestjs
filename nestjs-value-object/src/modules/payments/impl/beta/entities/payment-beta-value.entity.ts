@@ -18,11 +18,11 @@ export class PaymentBetaValueEntity implements PaymentEntity {
         return this.props.id.value;
     }
 
-    get amount(): Number {
+    get amount(): number {
         return this.props.amount.value;
     }
 
-    get discount(): Number {
+    get discount(): number {
         return this.props.discount.value;
     }
 

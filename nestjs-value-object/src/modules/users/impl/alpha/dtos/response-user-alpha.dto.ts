@@ -3,7 +3,7 @@ import { ResponseUserDto } from 'src/modules/users/interfaces/dtos';
 export class ResponseUserAlphaDto implements ResponseUserDto {
     readonly id: string;
     readonly name: string;
-    readonly age: Number;
+    readonly age: number;
     readonly email: string;
     readonly cpf: string;
     readonly createdAt: Date;
@@ -11,7 +11,7 @@ export class ResponseUserAlphaDto implements ResponseUserDto {
     private constructor(
         id: string,
         name: string,
-        age: Number,
+        age: number,
         email: string,
         cpf: string,
         createdAt: Date,
@@ -27,7 +27,7 @@ export class ResponseUserAlphaDto implements ResponseUserDto {
     static create(
         id: string,
         name: string,
-        age: Number,
+        age: number,
         email: string,
         cpf: string,
         createdAt: Date,

@@ -1,6 +1,6 @@
 export class CreatePaymentBetaDto {
     id?: string;
-    amount: Number;
-    discount: Number;
+    amount: number;
+    discount: number;
     description: string;
 }

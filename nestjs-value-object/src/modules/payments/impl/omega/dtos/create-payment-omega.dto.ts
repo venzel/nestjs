@@ -1,6 +1,6 @@
 export class CreatePaymentOmegaDto {
     id?: string;
-    amount: Number;
-    discount: Number;
+    amount: number;
+    discount: number;
     description: string;
 }

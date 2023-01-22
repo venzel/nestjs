@@ -33,15 +33,15 @@ export class PaymentAlphaEitherEntity implements PaymentEntity {
         return this.props.id.value;
     }
 
-    get amount(): Number {
+    get amount(): number {
         return this.props.amount.value;
     }
 
-    set amount(value: Number) {
+    set amount(value: number) {
         this.amount = value;
     }
 
-    get discount(): Number {
+    get discount(): number {
         return this.props.discount.value;
     }
 

@@ -11,7 +11,7 @@ export class UserAlphaTypeormEntity extends BaseEntity implements UserEntity {
     name: string;
 
     @Column()
-    age: Number;
+    age: number;
 
     @Column({ unique: true })
     email: string;

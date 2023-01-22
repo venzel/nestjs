@@ -1,9 +1,9 @@
 import { DiscountError } from '../errors';
 
 export class Discount {
-    private discount: Number;
+    private discount: number;
 
-    private constructor(discount: Number) {
+    private constructor(discount: number) {
         const isValid = Discount.validate(discount);
 
         if (!isValid) {
@@ -13,15 +13,15 @@ export class Discount {
         this.discount = discount;
     }
 
-    static create(discount: Number): Discount {
+    static create(discount: number): Discount {
         return new Discount(discount);
     }
 
-    get value(): Number {
+    get value(): number {
         return this.discount;
     }
 
-    static validate(discount: Number): boolean {
+    static validate(discount: number): boolean {
         if (!discount) {
             return false;
         }

@@ -8,10 +8,10 @@ export class PaymentAlphaTypeormEntity extends BaseEntity implements PaymentEnti
     id: string;
 
     @Column()
-    amount: Number;
+    amount: number;
 
     @Column()
-    discount: Number;
+    discount: number;
 
     @Column()
     description: string;

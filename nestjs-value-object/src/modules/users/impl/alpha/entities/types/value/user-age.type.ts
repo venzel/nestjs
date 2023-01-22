@@ -1,9 +1,9 @@
 import { AgeError } from '../errors';
 
 export class Age {
-    private age: Number;
+    private age: number;
 
-    private constructor(age: Number) {
+    private constructor(age: number) {
         const isValid = Age.validate(age);
 
         if (!isValid) {
@@ -13,15 +13,15 @@ export class Age {
         this.age = age;
     }
 
-    static create(age: Number): Age {
+    static create(age: number): Age {
         return new Age(age);
     }
 
-    get value(): Number {
+    get value(): number {
         return this.age;
     }
 
-    static validate(age: Number): boolean {
+    static validate(age: number): boolean {
         if (!age) {
             return false;
         }

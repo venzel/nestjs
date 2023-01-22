@@ -1,9 +1,9 @@
 import { AmountError } from '../errors';
 
 export class Amount {
-    private amount: Number;
+    private amount: number;
 
-    private constructor(amount: Number) {
+    private constructor(amount: number) {
         const isValid = Amount.validate(amount);
 
         if (!isValid) {
@@ -13,15 +13,15 @@ export class Amount {
         this.amount = amount;
     }
 
-    static create(amount: Number): Amount {
+    static create(amount: number): Amount {
         return new Amount(amount);
     }
 
-    get value(): Number {
+    get value(): number {
         return this.amount;
     }
 
-    static validate(amount: Number): boolean {
+    static validate(amount: number): boolean {
         if (!amount) {
             return false;
         }

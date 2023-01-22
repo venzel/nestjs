@@ -23,7 +23,7 @@ export class UserAlphaValueEntity implements UserEntity {
         return this.props.name.value;
     }
 
-    get age(): Number {
+    get age(): number {
         return this.props.age.value;
     }
 

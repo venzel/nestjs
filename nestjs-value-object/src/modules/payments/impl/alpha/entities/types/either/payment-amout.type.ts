@@ -2,11 +2,11 @@ import { Either, left, right } from 'src/core/helpers/either';
 import { AmountError } from '../errors';
 
 export class Amount {
-    private constructor(private readonly amount: Number) {
+    private constructor(private readonly amount: number) {
         Object.freeze(this);
     }
 
-    static create(amount: Number): Either<AmountError, Amount> {
+    static create(amount: number): Either<AmountError, Amount> {
         if (!this.validate(amount)) {
             return left(new AmountError(amount));
         }
@@ -14,11 +14,11 @@ export class Amount {
         return right(new Amount(amount));
     }
 
-    get value(): Number {
+    get value(): number {
         return this.amount;
     }
 
-    static validate(amount: Number): boolean {
+    static validate(amount: number): boolean {
         if (!amount) {
             return false;
         }
