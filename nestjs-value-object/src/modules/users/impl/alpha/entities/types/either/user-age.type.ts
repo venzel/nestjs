@@ -7,7 +7,7 @@ export class Age {
     }
 
     static create(age: number): Either<AgeError, Age> {
-        if (!this.valageate(age)) {
+        if (!this.validate(age)) {
             return left(new AgeError(age));
         }
 
@@ -18,10 +18,16 @@ export class Age {
         return this.age;
     }
 
-    static valageate(age: number): boolean {
+    static validate(age: number): boolean {
+        const pattern = /^\d+$/;
+
         if (!age) {
             return false;
         }
+
+        if (typeof age !== 'number') return false;
+
+        if (!pattern.test(age?.toString())) return false;
 
         return true;
     }
