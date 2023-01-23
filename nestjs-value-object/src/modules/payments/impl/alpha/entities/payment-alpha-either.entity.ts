@@ -37,10 +37,6 @@ export class PaymentAlphaEitherEntity implements PaymentEntity {
         return this.props.amount.value;
     }
 
-    set amount(value: number) {
-        this.amount = value;
-    }
-
     get discount(): number {
         return this.props.discount.value;
     }

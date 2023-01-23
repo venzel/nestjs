@@ -1,12 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
+import { AppException } from 'src/core/exceptions/app.exception';
 import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
 import { UserAlphaBaseService } from './user-alpha-base.service';
 
 @Injectable()
 export class CreateUserAlphaService extends UserAlphaBaseService {
-    async execute(createUserDto: CreateUserDto): Promise<ResponseUserDto> {
-        const user = this.usersRepository.create(createUserDto);
+    async execute(dto: CreateUserDto): Promise<ResponseUserDto> {
+        const existsUser = await this.usersRepository.findOneByEmail(dto.email);
 
-        return user;
+        if (existsUser) {
+            const message = `User email ${dto.email} already exists!`;
+            throw new AppException(HttpStatus.CONFLICT, message);
+        }
+
+        return this.usersRepository.create(dto);
     }
 }

@@ -10,7 +10,7 @@ export const winstonConfig: WinstonModuleOptions = {
                 winston.format.cli(),
                 winston.format.timestamp(),
                 winston.format.ms(),
-                nestWinstonModuleUtilities.format.nestLike('API v1', {
+                nestWinstonModuleUtilities.format.nestLike('API', {
                     colors: true,
                     prettyPrint: true,
                 }),

@@ -31,8 +31,8 @@ export class UserAlphaEitherEntity implements UserEntity {
         return this.props.id.value;
     }
 
-    set name(value: string) {
-        this.name = value;
+    get name(): string {
+        return this.props.name.value;
     }
 
     get age(): number {

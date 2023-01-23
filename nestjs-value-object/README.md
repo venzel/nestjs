@@ -7,6 +7,7 @@ Arquitetura de uma api rest com NestJs, utilizando a modelagem de domínios rico
 [Wesley Williams - Fullcycle](https://github.com/codeedu/nest-kafka/tree/master/apache-kafka)<br />
 [Iago Maia - Medium](https://medium.com/@iago.maiasilva/construindo-uma-api-com-nestjs-postgresql-e-docker-parte-1-criando-nosso-primeiro-endpoint-248d4b8ecc9c)<br />
 [Imersão Fullcycle](https://github.com/codeedu/live-imersao-fullcycle8-nestjs-clean-architecture)<br />
+[Linkedin clone](https://github.com/Jon-Peppinck/linkedin-clone)<br />
 [Migrations](https://orkhan.gitbook.io/typeorm/docs/migrations)
 
 ## Pré requisitos

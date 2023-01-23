@@ -1,7 +1,6 @@
 import { BadRequestException, Inject } from '@nestjs/common';
 import { UserEntity, UsersMapper, UsersRepository } from 'src/modules/users/interfaces';
 import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
-
 import { Repository } from 'typeorm';
 
 export class UserAlphaTypeormRepository implements UsersRepository {
@@ -10,7 +9,7 @@ export class UserAlphaTypeormRepository implements UsersRepository {
         private repository: Repository<UserEntity>,
 
         @Inject('USER_MAPPER')
-        private readonly userMapper: UsersMapper,
+        private readonly mapper: UsersMapper,
     ) {}
 
     async create(dto: CreateUserDto): Promise<UserEntity> {
@@ -19,7 +18,7 @@ export class UserAlphaTypeormRepository implements UsersRepository {
 
             await this.repository.save(user);
 
-            return this.userMapper.toDto(user);
+            return this.mapper.toDto(user);
         } catch (error) {
             throw new BadRequestException(error);
         }
@@ -31,7 +30,7 @@ export class UserAlphaTypeormRepository implements UsersRepository {
                 where: { id: userId },
             });
 
-            return existsUser ? this.userMapper.toDto(existsUser) : undefined;
+            return existsUser ? this.mapper.toDto(existsUser) : undefined;
         } catch (error) {
             throw new BadRequestException(error);
         }
@@ -43,7 +42,7 @@ export class UserAlphaTypeormRepository implements UsersRepository {
                 where: { email },
             });
 
-            return existsUser ? this.userMapper.toDto(existsUser) : undefined;
+            return existsUser ? this.mapper.toDto(existsUser) : undefined;
         } catch (error) {
             throw new BadRequestException(error);
         }
@@ -53,7 +52,7 @@ export class UserAlphaTypeormRepository implements UsersRepository {
         try {
             const users = await this.repository.find();
 
-            return users.length ? this.userMapper.toListDto(users) : [];
+            return users.length ? this.mapper.toListDto(users) : [];
         } catch (error) {
             throw new BadRequestException(error);
         }

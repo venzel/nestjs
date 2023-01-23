@@ -9,24 +9,16 @@ export class UsersAlphaMockRepository implements UsersRepository {
     constructor(@Inject('USER_MAPPER') private readonly mapper: UsersMapper) {}
 
     async create(dto: CreateUserDto): Promise<ResponseUserDto> {
-        const { id, email } = dto;
-
-        let existsUser;
+        const { id } = dto;
 
         if (!id) {
             dto.id = randomUUID();
         } else {
-            existsUser = await this.findOneById(id);
+            const existsUser = await this.findOneById(id);
 
             if (existsUser) {
                 throw new ConflictException(`Id ${id} already exists!`);
             }
-        }
-
-        existsUser = await this.findOneByEmail(email);
-
-        if (existsUser) {
-            throw new ConflictException(`Email ${email} already exists!`);
         }
 
         const user = this.mapper.toEntity(dto);
@@ -42,8 +34,8 @@ export class UsersAlphaMockRepository implements UsersRepository {
         return existsUser ? this.mapper.toDto(existsUser) : undefined;
     }
 
-    async findOneByEmail(email: string): Promise<ResponseUserDto | undefined> {
-        const existsUser = this.repository.find(({ email }) => email === email);
+    async findOneByEmail(userEmail: string): Promise<ResponseUserDto | undefined> {
+        const existsUser = this.repository.find(({ email }) => email === userEmail);
 
         return existsUser ? this.mapper.toDto(existsUser) : undefined;
     }
