@@ -19,13 +19,9 @@ export class Discount {
     }
 
     static validate(discount: number): boolean {
-        if (!discount) {
-            return false;
-        }
+        if (!discount) return false;
 
-        if (discount < 1 || discount > 15) {
-            return false;
-        }
+        if (discount < 1 || discount > 15) return false;
 
         return true;
     }

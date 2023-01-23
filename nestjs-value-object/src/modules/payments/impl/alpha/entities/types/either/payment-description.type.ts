@@ -19,9 +19,7 @@ export class Description {
     }
 
     static validate(description: string): boolean {
-        if (!description) {
-            return false;
-        }
+        if (!description) return false;
 
         return true;
     }

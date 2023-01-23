@@ -6,9 +6,7 @@ export class Name {
     private constructor(name: string) {
         const isValid = Name.validate(name);
 
-        if (!isValid) {
-            throw new NameError(name);
-        }
+        if (!isValid) throw new NameError(name);
 
         this.name = name;
     }
@@ -22,9 +20,7 @@ export class Name {
     }
 
     static validate(name: string): boolean {
-        if (!name) {
-            return false;
-        }
+        if (!name) return false;
 
         return true;
     }

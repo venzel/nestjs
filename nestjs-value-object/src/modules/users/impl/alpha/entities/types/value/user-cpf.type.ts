@@ -4,11 +4,9 @@ export class CPF {
     private cpf: string;
 
     private constructor(cpf: string) {
-        const isValcpf = CPF.valcpfate(cpf);
+        const isValid = CPF.validate(cpf);
 
-        if (!isValcpf) {
-            throw new CPFError(cpf);
-        }
+        if (!isValid) throw new CPFError(cpf);
 
         this.cpf = cpf;
     }
@@ -21,10 +19,8 @@ export class CPF {
         return this.cpf;
     }
 
-    static valcpfate(cpf: string): boolean {
-        if (!cpf) {
-            return false;
-        }
+    static validate(cpf: string): boolean {
+        if (!cpf) return false;
 
         return true;
     }

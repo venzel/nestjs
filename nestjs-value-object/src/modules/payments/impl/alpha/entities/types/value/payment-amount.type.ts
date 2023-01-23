@@ -6,9 +6,7 @@ export class Amount {
     private constructor(amount: number) {
         const isValid = Amount.validate(amount);
 
-        if (!isValid) {
-            throw new AmountError(amount);
-        }
+        if (!isValid) throw new AmountError(amount);
 
         this.amount = amount;
     }
@@ -22,13 +20,9 @@ export class Amount {
     }
 
     static validate(amount: number): boolean {
-        if (!amount) {
-            return false;
-        }
+        if (!amount) return false;
 
-        if (amount < 1 || amount > 10000) {
-            return false;
-        }
+        if (amount < 1 || amount > 10000) return false;
 
         return true;
     }

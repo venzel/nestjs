@@ -6,9 +6,7 @@ export class CreatedAt {
     private constructor(createdAt: Date) {
         const isValid = CreatedAt.validate(createdAt);
 
-        if (!isValid) {
-            throw new CreatedAtError(createdAt);
-        }
+        if (!isValid) throw new CreatedAtError(createdAt);
 
         this.createdAt = createdAt;
     }
@@ -22,9 +20,7 @@ export class CreatedAt {
     }
 
     static validate(createdAt: Date): boolean {
-        if (!createdAt) {
-            return false;
-        }
+        if (!createdAt) return false;
 
         return true;
     }

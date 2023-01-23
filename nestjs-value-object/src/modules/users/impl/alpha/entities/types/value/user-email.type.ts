@@ -6,9 +6,7 @@ export class Email {
     private constructor(email: string) {
         const isValid = Email.validate(email);
 
-        if (!isValid) {
-            throw new EmailError(email);
-        }
+        if (!isValid) throw new EmailError(email);
 
         this.email = email;
     }
@@ -22,9 +20,7 @@ export class Email {
     }
 
     static validate(email: string): boolean {
-        if (!email) {
-            return false;
-        }
+        if (!email) return false;
 
         return true;
     }

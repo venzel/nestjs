@@ -19,9 +19,7 @@ export class Name {
     }
 
     static validate(name: string): boolean {
-        if (!name) {
-            return false;
-        }
+        if (!name) return false;
 
         return true;
     }

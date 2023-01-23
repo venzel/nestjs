@@ -21,9 +21,7 @@ export class Age {
     static validate(age: number): boolean {
         const pattern = /^\d+$/;
 
-        if (!age) {
-            return false;
-        }
+        if (!age) return false;
 
         if (typeof age !== 'number') return false;
 

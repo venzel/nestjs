@@ -7,7 +7,7 @@ export class CreatedAt {
     }
 
     static create(createdAt: Date): Either<CreatedAtError, CreatedAt> {
-        if (!this.valcreatedAtate(createdAt)) {
+        if (!this.validate(createdAt)) {
             return left(new CreatedAtError(createdAt));
         }
 
@@ -18,10 +18,8 @@ export class CreatedAt {
         return this.createdAt;
     }
 
-    static valcreatedAtate(createdAt: Date): boolean {
-        if (!createdAt) {
-            return false;
-        }
+    static validate(createdAt: Date): boolean {
+        if (!createdAt) return false;
 
         return true;
     }

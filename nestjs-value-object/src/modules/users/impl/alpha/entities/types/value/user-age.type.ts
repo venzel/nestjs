@@ -6,9 +6,7 @@ export class Age {
     private constructor(age: number) {
         const isValid = Age.validate(age);
 
-        if (!isValid) {
-            throw new AgeError(age);
-        }
+        if (!isValid) throw new AgeError(age);
 
         this.age = age;
     }
@@ -22,13 +20,13 @@ export class Age {
     }
 
     static validate(age: number): boolean {
-        if (!age) {
-            return false;
-        }
+        const pattern = /^\d+$/;
 
-        if (age < 5 || age > 10) {
-            return false;
-        }
+        if (!age) return false;
+
+        if (typeof age !== 'number') return false;
+
+        if (!pattern.test(age?.toString())) return false;
 
         return true;
     }

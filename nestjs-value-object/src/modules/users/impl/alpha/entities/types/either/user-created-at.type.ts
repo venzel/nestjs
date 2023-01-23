@@ -19,9 +19,7 @@ export class CreatedAt {
     }
 
     static valcreatedAtate(createdAt: Date): boolean {
-        if (!createdAt) {
-            return false;
-        }
+        if (!createdAt) return false;
 
         return true;
     }

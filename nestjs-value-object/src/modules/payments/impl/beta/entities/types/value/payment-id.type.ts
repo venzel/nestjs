@@ -6,9 +6,7 @@ export class Id {
     private constructor(id: string) {
         const isValid = Id.validate(id);
 
-        if (!isValid) {
-            throw new IdError(id);
-        }
+        if (!isValid) throw new IdError(id);
 
         this.id = id;
     }
@@ -22,9 +20,7 @@ export class Id {
     }
 
     static validate(id: string): boolean {
-        if (!id) {
-            return false;
-        }
+        if (!id) return false;
 
         return true;
     }

@@ -19,13 +19,9 @@ export class Amount {
     }
 
     static validate(amount: number): boolean {
-        if (!amount) {
-            return false;
-        }
+        if (!amount) return false;
 
-        if (amount < 1 || amount > 10000) {
-            return false;
-        }
+        if (amount < 1 || amount > 10000) return false;
 
         return true;
     }

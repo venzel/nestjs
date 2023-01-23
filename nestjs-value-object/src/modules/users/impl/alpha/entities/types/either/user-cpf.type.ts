@@ -7,7 +7,7 @@ export class CPF {
     }
 
     static create(cpf: string): Either<CPFError, CPF> {
-        if (!this.valcpfate(cpf)) {
+        if (!this.validate(cpf)) {
             return left(new CPFError(cpf));
         }
 
@@ -18,10 +18,8 @@ export class CPF {
         return this.cpf;
     }
 
-    static valcpfate(cpf: string): boolean {
-        if (!cpf) {
-            return false;
-        }
+    static validate(cpf: string): boolean {
+        if (!cpf) return false;
 
         return true;
     }
