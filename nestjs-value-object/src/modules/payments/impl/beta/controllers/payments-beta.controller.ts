@@ -8,20 +8,20 @@ import { PaymentBetaServicesAdapter } from '../services/payment-beta-services.ad
 @Controller({ path: 'payments', version: '2' })
 @UseInterceptors(NotContentInterceptor)
 export class PaymentsBetaController implements PaymentsController {
-    constructor(private readonly paymentsServiceAdapter: PaymentBetaServicesAdapter) {}
+    constructor(private readonly service: PaymentBetaServicesAdapter) {}
 
     @Post()
     async create(@Body() createPaymentDto: CreatePaymentDto): Promise<ResponsePaymentDto> {
-        return await this.paymentsServiceAdapter.create(createPaymentDto);
+        return await this.service.create(createPaymentDto);
     }
 
     @Get(':id')
     async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
-        return await this.paymentsServiceAdapter.findOne(id);
+        return await this.service.findOne(id);
     }
 
     @Get()
     async list(): Promise<ResponsePaymentDto[]> {
-        return await this.paymentsServiceAdapter.list();
+        return await this.service.list();
     }
 }

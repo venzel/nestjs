@@ -8,20 +8,20 @@ import { UserAlphaServicesAdapter } from '../services/user-alpha-services.adapte
 @Controller({ path: 'users', version: '1' })
 @UseInterceptors(NotContentInterceptor)
 export class UsersAlphaController implements UsersController {
-    constructor(private readonly usersServiceAdapter: UserAlphaServicesAdapter) {}
+    constructor(private readonly service: UserAlphaServicesAdapter) {}
 
     @Post()
     async create(@Body() createUserDto: CreateUserDto): Promise<ResponseUserDto> {
-        return await this.usersServiceAdapter.create(createUserDto);
+        return await this.service.create(createUserDto);
     }
 
     @Get(':id')
     async findOne(@ParamUUID() id: string): Promise<ResponseUserDto> {
-        return await this.usersServiceAdapter.findOne(id);
+        return await this.service.findOne(id);
     }
 
     @Get()
     async list(): Promise<ResponseUserDto[]> {
-        return await this.usersServiceAdapter.list();
+        return await this.service.list();
     }
 }

@@ -8,20 +8,20 @@ import { PaymentAlphaServicesAdapter } from '../services/payment-alpha-services.
 @Controller({ path: 'payments', version: '1' })
 @UseInterceptors(NotContentInterceptor)
 export class PaymentsAlphaController implements PaymentsController {
-    constructor(private readonly paymentsServiceAdapter: PaymentAlphaServicesAdapter) {}
+    constructor(private readonly service: PaymentAlphaServicesAdapter) {}
 
     @Post()
     async create(@Body() createPaymentDto: CreatePaymentDto): Promise<ResponsePaymentDto> {
-        return await this.paymentsServiceAdapter.create(createPaymentDto);
+        return await this.service.create(createPaymentDto);
     }
 
     @Get(':id')
     async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
-        return await this.paymentsServiceAdapter.findOne(id);
+        return await this.service.findOne(id);
     }
 
     @Get()
     async list(): Promise<ResponsePaymentDto[]> {
-        return await this.paymentsServiceAdapter.list();
+        return await this.service.list();
     }
 }
