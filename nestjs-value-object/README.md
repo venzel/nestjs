@@ -59,6 +59,29 @@ nest g res payments --no-spec
 -   Testes unitários com o Jest, guiado pelo coverage reports;
 -   Utilização de bibliotecas para transpilar o código mais rapidamente;
 
+## Implementações
+
+-   Logar a aplicações com msgs;
+-   Iniciar aplicação só depois do banco de dados;
+-   Atalhos com arrobas e copilação;
+-   Módulo relatórios com o mongodb;
+-   Swagger;
+-   Filas com o Kafka;
+-   Decorator personalizado;
+-   Validators;
+-   Seeders;
+-   Testes;
+-   Healthcheck;
+-   HateLimit;
+-   Consumo de api externa;
+-   Helmet;
+-   Morgan;
+-   Captura de erros com o sentry;
+-   Paginação com o mongodb;
+-   Busca com o mongodb;
+-   Espurgo de dados com cronjob;
+-   Sockets para parte de relatórios.
+
 ## Pacotes utilizados
 
 -   @nestjs/config
