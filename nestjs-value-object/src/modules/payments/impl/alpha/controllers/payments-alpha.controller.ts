@@ -5,7 +5,7 @@ import { PaymentsController } from '@payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from '@payments/interfaces/dtos';
 import { PaymentAlphaServicesAdapter } from '../services/payment-alpha-services.adapter';
 import { pathsConfig } from '@configs/paths.config';
-const { path, deleteOne } = pathsConfig.payments;
+const { path, findOne } = pathsConfig.payments;
 
 @Controller({ path, version: '1' })
 @UseInterceptors(NotContentInterceptor)
@@ -17,7 +17,7 @@ export class PaymentsAlphaController implements PaymentsController {
         return await this.service.create(createPaymentDto);
     }
 
-    @Get(deleteOne)
+    @Get(findOne)
     async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
         return await this.service.findOne(id);
     }

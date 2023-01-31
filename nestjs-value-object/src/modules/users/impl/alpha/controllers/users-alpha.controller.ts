@@ -5,7 +5,7 @@ import { UsersController } from 'modules/users/interfaces';
 import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { UserAlphaServicesAdapter } from '../services/user-alpha-services.adapter';
 import { pathsConfig } from '@configs/paths.config';
-const { path } = pathsConfig.users;
+const { path, findOne } = pathsConfig.users;
 
 @Controller({ path, version: '1' })
 @UseInterceptors(NotContentInterceptor)
@@ -17,7 +17,7 @@ export class UsersAlphaController implements UsersController {
         return await this.service.create(createUserDto);
     }
 
-    @Get(':id')
+    @Get(findOne)
     async findOne(@ParamUUID() id: string): Promise<ResponseUserDto> {
         return await this.service.findOne(id);
     }

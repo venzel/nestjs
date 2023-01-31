@@ -3,7 +3,7 @@ import { ParamUUID } from 'core/decorators/param-uuid.decorator';
 import { PaymentsController } from 'modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 import { pathsConfig } from '@configs/paths.config';
-const { path, deleteOne } = pathsConfig.payments;
+const { path, findOne, deleteOne } = pathsConfig.payments;
 
 @Controller({ path, version: '3' })
 export class PaymentsOmegaController implements PaymentsController {
@@ -14,7 +14,7 @@ export class PaymentsOmegaController implements PaymentsController {
         return null;
     }
 
-    @Get(deleteOne)
+    @Get(findOne)
     async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
         return null;
     }
