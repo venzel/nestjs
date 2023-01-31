@@ -1,4 +1,4 @@
-import { CreateUserDto } from 'src/modules/users/interfaces/dtos';
+import { CreateUserDto } from 'modules/users/interfaces/dtos';
 
 export class CreateUserAlphaDto implements CreateUserDto {
     id?: string;

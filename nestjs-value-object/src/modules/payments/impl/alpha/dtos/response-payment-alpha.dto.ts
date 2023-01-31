@@ -1,4 +1,4 @@
-import { ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 
 export class ResponsePaymentAlphaDto implements ResponsePaymentDto {
     readonly id: string;

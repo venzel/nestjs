@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
-import { Either, left, right } from 'src/core/helpers/either';
-import { UserEntity } from 'src/modules/users/interfaces';
-import { CreateUserDto } from 'src/modules/users/interfaces/dtos';
+import { Either, left, right } from 'core/helpers/either';
+import { UserEntity } from 'modules/users/interfaces';
+import { CreateUserDto } from 'modules/users/interfaces/dtos';
 import { Age, Email, CPF, CreatedAt, Id, Name } from './types/either';
 import { AgeError, CreatedAtError, IdError, NameError } from './types/errors';
 import { CPFError } from './types/errors/user-cpf.error';

@@ -1,5 +1,5 @@
-import { generateId } from 'src/core/helpers/generate-id.helper';
-import { PaymentEntity } from 'src/modules/payments/interfaces';
+import { generateId } from 'core/helpers/generate-id.helper';
+import { PaymentEntity } from 'modules/payments/interfaces';
 import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('payments')

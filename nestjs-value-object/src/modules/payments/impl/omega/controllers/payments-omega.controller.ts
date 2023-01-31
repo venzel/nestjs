@@ -1,9 +1,11 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { ParamUUID } from 'src/core/decorators/param-uuid.decorator';
-import { PaymentsController } from 'src/modules/payments/interfaces';
-import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { ParamUUID } from 'core/decorators/param-uuid.decorator';
+import { PaymentsController } from 'modules/payments/interfaces';
+import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
+import { pathsConfig } from '@configs/paths.config';
+const { path, deleteOne } = pathsConfig.payments;
 
-@Controller({ path: 'payments', version: '3' })
+@Controller({ path, version: '3' })
 export class PaymentsOmegaController implements PaymentsController {
     constructor() {}
 
@@ -12,7 +14,7 @@ export class PaymentsOmegaController implements PaymentsController {
         return null;
     }
 
-    @Get(':id')
+    @Get(deleteOne)
     async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
         return null;
     }

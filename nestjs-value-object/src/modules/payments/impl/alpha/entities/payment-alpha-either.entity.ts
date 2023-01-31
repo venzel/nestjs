@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { Either, left, right } from 'src/core/helpers/either';
+import { Either, left, right } from 'core/helpers/either';
 import {
     AmountError,
     CreatedAtError,
@@ -8,8 +8,8 @@ import {
     IdError,
 } from './types/errors';
 import { Amount, CreatedAt, Description, Discount, Id } from './types/either';
-import { PaymentEntity } from 'src/modules/payments/interfaces';
-import { CreatePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { PaymentEntity } from 'modules/payments/interfaces';
+import { CreatePaymentDto } from 'modules/payments/interfaces/dtos';
 
 export interface PaymentEntityProps {
     id: Id;

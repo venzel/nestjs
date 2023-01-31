@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
-import { UserIdCheckMiddleware } from 'src/core/middlewares/user-id-check.middleware';
+import { UserIdCheckMiddleware } from 'core/middlewares/user-id-check.middleware';
 import { PaymentsBetaController } from './controllers/payments-beta.controller';
 import { PaymentsBetaValueMapper } from './mappers/payments-beta-value.mapper';
 import { PaymentsBetaMockRepository } from './repositories/payments-beta-mock.repository';

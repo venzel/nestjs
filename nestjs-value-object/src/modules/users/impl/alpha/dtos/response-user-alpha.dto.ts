@@ -1,4 +1,4 @@
-import { ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { ResponseUserDto } from 'modules/users/interfaces/dtos';
 
 export class ResponseUserAlphaDto implements ResponseUserDto {
     readonly id: string;

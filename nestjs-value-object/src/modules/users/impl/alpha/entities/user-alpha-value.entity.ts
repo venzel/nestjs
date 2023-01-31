@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { UserEntity } from 'src/modules/users/interfaces';
+import { UserEntity } from 'modules/users/interfaces';
 import { CreateUserAlphaDto } from '../dtos';
 import { Name, CreatedAt, Age, Id, Email, CPF } from './types/value';
 

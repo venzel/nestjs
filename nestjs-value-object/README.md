@@ -127,7 +127,7 @@ yarn migration:down
             "tsx": false,
             "decorators": true
         },
-        "target": "es2017",
+        "target": "es2020",
         "keepClassNames": true,
         "transform": {
             "legacyDecorator": true,
@@ -136,6 +136,16 @@ yarn migration:down
     },
     "module": {
         "type": "commonjs"
+    }
+}
+```
+
+## No arquivo tsconfig.json, configurar o target para o es 2020
+
+```json
+{
+    "compilerOptions": {
+        "target": "ES2020"
     }
 }
 ```

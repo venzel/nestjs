@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 import { PaymentAlphaBaseService } from './payment-alpha-base.service';
 
 @Injectable()

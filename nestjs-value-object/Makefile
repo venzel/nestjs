@@ -3,6 +3,11 @@
 dev:
 	yarn start:dev
 
+.PHONY: build
+
+build:
+	yarn build
+
 .PHONY: up
 
 up:

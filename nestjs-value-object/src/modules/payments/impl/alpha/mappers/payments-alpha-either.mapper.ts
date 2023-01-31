@@ -1,6 +1,6 @@
 import { UnprocessableEntityException } from '@nestjs/common';
-import { PaymentsMapper } from 'src/modules/payments/interfaces';
-import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { PaymentsMapper } from 'modules/payments/interfaces';
+import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 import { ResponsePaymentAlphaDto } from '../dtos';
 import { PaymentAlphaEitherEntity } from '../entities/payment-alpha-either.entity';
 

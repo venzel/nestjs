@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { PaymentEntity } from 'src/modules/payments/interfaces';
+import { PaymentEntity } from 'modules/payments/interfaces';
 import { CreatePaymentAlphaDto } from '../dtos';
 import { Amount, CreatedAt, Description, Discount, Id } from './types/value';
 

@@ -1,4 +1,4 @@
-import { CreatePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { CreatePaymentDto } from 'modules/payments/interfaces/dtos';
 
 export class CreatePaymentAlphaDto implements CreatePaymentDto {
     id?: string;

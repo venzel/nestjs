@@ -1,5 +1,5 @@
-import { UsersMapper } from 'src/modules/users/interfaces';
-import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { UsersMapper } from 'modules/users/interfaces';
+import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { ResponseUserAlphaDto } from '../dtos';
 import { UserAlphaValueEntity } from '../entities/user-alpha-value.entity';
 

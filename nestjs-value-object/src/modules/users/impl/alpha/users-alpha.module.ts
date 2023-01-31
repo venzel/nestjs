@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
-import { UserIdCheckMiddleware } from 'src/core/middlewares/user-id-check.middleware';
-import { datasourceProvider } from 'src/core/providers/internals/datasource-internal.provider';
+import { UserIdCheckMiddleware } from 'core/middlewares/user-id-check.middleware';
+import { datasourceProvider } from 'core/providers/internals/datasource-internal.provider';
 import { DataSource } from 'typeorm';
 import { UsersAlphaController } from './controllers/users-alpha.controller';
 import { UserAlphaTypeormEntity } from './infra/typeorm/entities/user-alpha-typeorm.entity';

@@ -1,4 +1,4 @@
-import { Either, left, right } from 'src/core/helpers/either';
+import { Either, left, right } from 'core/helpers/either';
 import { DescriptionError } from '../errors';
 
 export class Description {

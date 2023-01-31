@@ -1,6 +1,6 @@
 import { UnprocessableEntityException } from '@nestjs/common';
-import { UsersMapper } from 'src/modules/users/interfaces';
-import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { UsersMapper } from 'modules/users/interfaces';
+import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { ResponseUserAlphaDto } from '../dtos';
 import { UserAlphaEitherEntity } from '../entities/user-alpha-either.entity';
 

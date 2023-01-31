@@ -1,11 +1,13 @@
 import { Body, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
-import { ParamUUID } from 'src/core/decorators/param-uuid.decorator';
-import { NotContentInterceptor } from 'src/core/interceptors/not-content.interceptor';
-import { PaymentsController } from 'src/modules/payments/interfaces';
-import { CreatePaymentDto, ResponsePaymentDto } from 'src/modules/payments/interfaces/dtos';
+import { ParamUUID } from '@decorators/param-uuid.decorator';
+import { NotContentInterceptor } from '@interceptors/not-content.interceptor';
+import { PaymentsController } from '@payments/interfaces';
+import { CreatePaymentDto, ResponsePaymentDto } from '@payments/interfaces/dtos';
 import { PaymentAlphaServicesAdapter } from '../services/payment-alpha-services.adapter';
+import { pathsConfig } from '@configs/paths.config';
+const { path, deleteOne } = pathsConfig.payments;
 
-@Controller({ path: 'payments', version: '1' })
+@Controller({ path, version: '1' })
 @UseInterceptors(NotContentInterceptor)
 export class PaymentsAlphaController implements PaymentsController {
     constructor(private readonly service: PaymentAlphaServicesAdapter) {}
@@ -15,7 +17,7 @@ export class PaymentsAlphaController implements PaymentsController {
         return await this.service.create(createPaymentDto);
     }
 
-    @Get(':id')
+    @Get(deleteOne)
     async findOne(@ParamUUID() id: string): Promise<ResponsePaymentDto> {
         return await this.service.findOne(id);
     }

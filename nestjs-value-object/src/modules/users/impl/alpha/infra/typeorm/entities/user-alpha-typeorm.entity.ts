@@ -1,5 +1,5 @@
-import { generateId } from 'src/core/helpers/generate-id.helper';
-import { UserEntity } from 'src/modules/users/interfaces';
+import { generateId } from 'core/helpers/generate-id.helper';
+import { UserEntity } from 'modules/users/interfaces';
 import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, Unique } from 'typeorm';
 
 @Entity('users')

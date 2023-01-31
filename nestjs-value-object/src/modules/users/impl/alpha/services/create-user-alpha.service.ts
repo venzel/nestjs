@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { AppException } from 'src/core/exceptions/app.exception';
-import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { AppException } from 'core/exceptions/app.exception';
+import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { UserAlphaBaseService } from './user-alpha-base.service';
 
 @Injectable()

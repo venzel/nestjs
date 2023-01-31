@@ -1,6 +1,6 @@
 import { BadRequestException, Inject } from '@nestjs/common';
-import { UserEntity, UsersMapper, UsersRepository } from 'src/modules/users/interfaces';
-import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { UserEntity, UsersMapper, UsersRepository } from 'modules/users/interfaces';
+import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { Repository } from 'typeorm';
 
 export class UserAlphaTypeormRepository implements UsersRepository {

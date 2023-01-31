@@ -21,7 +21,7 @@ export const datasourceProvider = [
                 connectTimeoutMS: 3000,
             });
 
-            return dataSource.initialize();
+            return await dataSource.initialize();
         },
     },
 ];

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { UserAlphaBaseService } from './user-alpha-base.service';
 
 @Injectable()

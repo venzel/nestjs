@@ -1,7 +1,7 @@
 import { ConflictException, Inject } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
-import { UserEntity, UsersMapper, UsersRepository } from 'src/modules/users/interfaces';
-import { CreateUserDto, ResponseUserDto } from 'src/modules/users/interfaces/dtos';
+import { UserEntity, UsersMapper, UsersRepository } from 'modules/users/interfaces';
+import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 
 export class UsersAlphaMockRepository implements UsersRepository {
     private readonly repository: UserEntity[] = [];
