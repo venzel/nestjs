@@ -5,9 +5,9 @@ import { PaymentsController } from '@payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from '@payments/interfaces/dtos';
 import { PaymentAlphaServicesAdapter } from '../services/payment-alpha-services.adapter';
 import { pathsConfig } from '@configs/paths.config';
-const { path, findOne } = pathsConfig.payments;
+const { base, findOne } = pathsConfig.payments;
 
-@Controller({ path, version: '1' })
+@Controller({ path: base, version: '1' })
 @UseInterceptors(NotContentInterceptor)
 export class PaymentsAlphaController implements PaymentsController {
     constructor(private readonly service: PaymentAlphaServicesAdapter) {}

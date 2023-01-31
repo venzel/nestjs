@@ -5,9 +5,9 @@ import { UsersController } from 'modules/users/interfaces';
 import { CreateUserDto, ResponseUserDto } from 'modules/users/interfaces/dtos';
 import { UserAlphaServicesAdapter } from '../services/user-alpha-services.adapter';
 import { pathsConfig } from '@configs/paths.config';
-const { path, findOne } = pathsConfig.users;
+const { base, findOne } = pathsConfig.users;
 
-@Controller({ path, version: '1' })
+@Controller({ path: base, version: '1' })
 @UseInterceptors(NotContentInterceptor)
 export class UsersAlphaController implements UsersController {
     constructor(private readonly service: UserAlphaServicesAdapter) {}

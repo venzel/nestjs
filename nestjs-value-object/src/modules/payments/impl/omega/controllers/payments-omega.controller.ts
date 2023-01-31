@@ -3,9 +3,9 @@ import { ParamUUID } from 'core/decorators/param-uuid.decorator';
 import { PaymentsController } from 'modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 import { pathsConfig } from '@configs/paths.config';
-const { path, findOne, deleteOne } = pathsConfig.payments;
+const { base, findOne } = pathsConfig.payments;
 
-@Controller({ path, version: '3' })
+@Controller({ path: base, version: '3' })
 export class PaymentsOmegaController implements PaymentsController {
     constructor() {}
 

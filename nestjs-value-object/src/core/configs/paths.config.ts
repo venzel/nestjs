@@ -1,11 +1,11 @@
 const pathsConfig = {
     payments: {
-        path: 'payments',
+        base: 'payments',
         findOne: ':id',
         deleteOne: ':id',
     },
     users: {
-        path: 'users',
+        base: 'users',
         findOne: ':id',
         deleteOne: ':id',
     },
