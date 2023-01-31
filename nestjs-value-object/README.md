@@ -145,7 +145,20 @@ yarn migration:down
 ```json
 {
     "compilerOptions": {
-        "target": "ES2020"
+        "target": "ES2020",
+        "paths": {
+            "@configs/*": ["core/configs/*"],
+            "@providers/*": ["core/providers/*"],
+            "@database/*": ["core/database/*"],
+            "@exceptions/*": ["core/exceptions/*"],
+            "@decorators/*": ["core/decorators/*"],
+            "@interceptors/*": ["core/interceptors/*"],
+            "@middlewares/*": ["core/middlewares/*"],
+            "@helpers/*": ["core/helpers/*"],
+            "@payments/*": ["modules/payments/*"],
+            "@users/*": ["modules/users/*"]
+        },
+        "resolveJsonModule": true
     }
 }
 ```
