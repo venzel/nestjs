@@ -1,9 +1,9 @@
 import { Inject } from '@nestjs/common';
-import { PaymentsRepository } from '../../../interfaces';
+import { PaymentRepository } from '../../../interfaces';
 
 export abstract class PaymentBetaBaseService {
     constructor(
         @Inject('PAYMENT_REPOSITORY')
-        protected readonly paymentsRepository: PaymentsRepository,
+        protected readonly paymentRepository: PaymentRepository,
     ) {}
 }

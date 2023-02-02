@@ -1,9 +1,9 @@
 import { ConflictException, Inject } from '@nestjs/common';
-import { PaymentEntity, PaymentsMapper, PaymentsRepository } from 'modules/payments/interfaces';
+import { PaymentEntity, PaymentsMapper, PaymentRepository } from 'modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 import { randomUUID } from 'node:crypto';
 
-export class PaymentsBetaMockRepository implements PaymentsRepository {
+export class PaymentsBetaMockRepository implements PaymentRepository {
     private readonly repository: PaymentEntity[] = [];
 
     constructor(@Inject('PAYMENT_MAPPER') private readonly mapper: PaymentsMapper) {}

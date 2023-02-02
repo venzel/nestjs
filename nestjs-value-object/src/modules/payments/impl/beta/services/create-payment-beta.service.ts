@@ -5,7 +5,7 @@ import { PaymentBetaBaseService } from './payment-beta-base.service';
 @Injectable()
 export class CreatePaymentBetaService extends PaymentBetaBaseService {
     async execute(createPaymentDto: CreatePaymentDto): Promise<ResponsePaymentDto> {
-        const payment = this.paymentsRepository.create(createPaymentDto);
+        const payment = this.paymentRepository.create(createPaymentDto);
 
         return payment;
     }

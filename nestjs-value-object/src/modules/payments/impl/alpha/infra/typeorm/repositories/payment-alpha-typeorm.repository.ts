@@ -1,10 +1,10 @@
 import { BadRequestException, Inject } from '@nestjs/common';
-import { PaymentEntity, PaymentsMapper, PaymentsRepository } from 'modules/payments/interfaces';
+import { PaymentEntity, PaymentsMapper, PaymentRepository } from 'modules/payments/interfaces';
 import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 
 import { Repository } from 'typeorm';
 
-export class PaymentAlphaTypeormRepository implements PaymentsRepository {
+export class PaymentAlphaTypeormRepository implements PaymentRepository {
     constructor(
         @Inject('PAYMENT_TYPEORM_REPOSITORY')
         private repository: Repository<PaymentEntity>,

@@ -1,11 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { PaymentRepository } from '@payments/interfaces';
 import { ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
-import { PaymentAlphaBaseService } from './payment-alpha-base.service';
 
 @Injectable()
-export class FindOnePaymentAlphaService extends PaymentAlphaBaseService {
+export class FindOnePaymentAlphaService {
+    constructor(
+        @Inject('PAYMENT_REPOSITORY')
+        protected readonly paymentRepository: PaymentRepository,
+    ) {}
+
     async execute(id: string): Promise<ResponsePaymentDto> {
-        const existsPayment = await this.paymentsRepository.findOneById(id);
+        const existsPayment = await this.paymentRepository.findOneById(id);
 
         return existsPayment;
     }

@@ -1,10 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { PaymentRepository } from '@payments/interfaces';
 import { ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
-import { PaymentAlphaBaseService } from './payment-alpha-base.service';
 
 @Injectable()
-export class ListPaymentsAlphaService extends PaymentAlphaBaseService {
+export class ListPaymentsAlphaService {
+    constructor(
+        @Inject('PAYMENT_REPOSITORY')
+        protected readonly paymentRepository: PaymentRepository,
+    ) {}
+
     async execute(): Promise<ResponsePaymentDto[]> {
-        return this.paymentsRepository.list();
+        return this.paymentRepository.list();
     }
 }

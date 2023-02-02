@@ -93,6 +93,7 @@ nest g res payments --no-spec
 -   class-transformer
 -   @swc/jest -D (Módulo para acelerar o transpile)
 -   @swc/core -D (Módulo para acelerar o transpile)
+-   @nestjs/axios
 
 ## TypeOrm
 
