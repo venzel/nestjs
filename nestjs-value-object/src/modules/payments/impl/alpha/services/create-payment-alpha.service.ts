@@ -1,8 +1,7 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { PaymentRepository } from '@payments/interfaces';
-import { ShippingEnum } from '@providers/external/shipping/shipping.enum';
-import { ShippingEstrategy } from '@providers/external/shipping/shipping.estrategy';
-import { ShippingProvider } from '@providers/external/shipping/shipping.provider';
+import { ShippingEnum } from '@providers/shipping/shipping.enum';
+import { ShippingEstrategy } from '@providers/shipping/shipping.estrategy';
 import { CreatePaymentDto, ResponsePaymentDto } from 'modules/payments/interfaces/dtos';
 
 @Injectable()
